@@ -1,9 +1,9 @@
 import os
-from dotenv import load_dotenv
 
 from crewai import Agent, Task, Crew, Process
 from langchain_google_genai import ChatGoogleGenerativeAI
 
+from dotenv import load_dotenv
 
 def setup_environment():
     """
@@ -40,6 +40,7 @@ def main():
         ),
         verbose=True,
         allow_delegation=False,
+        llm=llm,
     )
 
     writer = Agent(
@@ -51,6 +52,7 @@ def main():
         ),
         verbose=True,
         allow_delegation=False,
+        llm=llm,
     )
 
     # --- Define Tasks ---
@@ -84,8 +86,7 @@ def main():
         agents=[researcher, writer],
         tasks=[research_task, writing_task],
         process=Process.sequential,
-        llm=llm,
-        verbose=2,  # Detailed execution logs
+        verbose=True,  # Detailed execution logs
     )
 
     # --- Execute the Crew ---

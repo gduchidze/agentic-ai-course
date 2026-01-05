@@ -2,8 +2,6 @@ import os
 import getpass
 import asyncio
 import nest_asyncio
-import logging
-from typing import List
 
 from dotenv import load_dotenv
 from langchain_google_genai import ChatGoogleGenerativeAI
